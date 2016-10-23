@@ -1,0 +1,23 @@
+# Place this file in the directory one level above this current directory
+on: '2'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:3.2.6
+    network_mode: host
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - /usr/local/mongodb:/data/db
+
+  mongo-loopback-api:
+    container_name: mongo-loopback-api
+    image: mongo-loopback-api:1.0.0
+    build:
+      context: ./mongo-loopback-api
+      dockerfile: Dockerfile
+    network_mode: host
+    ports:
+      - "3000:3000/tcp"
+    restart: always
