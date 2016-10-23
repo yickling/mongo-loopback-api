@@ -10,9 +10,9 @@ services:
       - "27017:27017"
     volumes:
       - /usr/local/mongodb:/data/db
-  mongoloopbackapi:
-    container_name: mongoloopbackapi
-    image: mongoloopbackapi:1.0.0
+  mongo-loopback-api:
+    container_name: mongo-loopback-api
+    image: mongo-loopback-api:1.0.0
     build:
       context: ./mongo-loopback-api
       dockerfile: Dockerfile
