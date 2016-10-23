@@ -1,5 +1,5 @@
 # Place this file in the directory one level above this current directory
-on: '2'
+version: '2'
 services:
   mongo:
     container_name: mongo
@@ -10,14 +10,13 @@ services:
       - "27017:27017"
     volumes:
       - /usr/local/mongodb:/data/db
-
-  mongo-loopback-api:
-    container_name: mongo-loopback-api
-    image: mongo-loopback-api:1.0.0
+  mongoloopbackapi:
+    container_name: mongoloopbackapi
+    image: mongoloopbackapi:1.0.0
     build:
       context: ./mongo-loopback-api
       dockerfile: Dockerfile
     network_mode: host
     ports:
-      - "3000:3000/tcp"
+      - "3000:3000"
     restart: always
